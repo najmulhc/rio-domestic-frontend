@@ -1,4 +1,3 @@
-import {} from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import Container from '../components/container/Container';
 import Cart from '../pages/Cart';

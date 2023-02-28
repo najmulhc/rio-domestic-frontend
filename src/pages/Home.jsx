@@ -1,6 +1,8 @@
 const Home = () => {
   const string = 'Khalid Farhan Home';
-  return <div>{string}</div>;
+  return <div>
+    
+    </div>;
 };
 
 export default Home;
