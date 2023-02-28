@@ -6,7 +6,7 @@
 
 ## Features
 
-- User authentication with JWT tokens
+- Full app global state management with redux and react-redux
 - Product fetching with filtering and sorting
 - CRUD operations for products, users, and orders
 - Cart management with RTK Query and Redux Toolkit
