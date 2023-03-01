@@ -7,6 +7,10 @@ import Login from '../pages/Login/Login';
 import Product from '../pages/Product/Product';
 import Register from '../pages/Register/Register';
 import Role from '../pages/Role/Role';
+import Dashboard from '../pages/Dashboard/Dashboard';
+import Products from '../components/dashboard/Products/NavProducts';
+import AddProduct from '../components/dashboard/AddProducts/AddProduct';
+import Orders from '../components/dashboard/Orders/Orders';
 
 const router = createBrowserRouter([
   {
@@ -40,6 +44,24 @@ const router = createBrowserRouter([
       {
         path: '/select-role',
         element: <Role />,
+      },
+      {
+        path: '/dashboard',
+        element: <Dashboard />,
+        children: [
+          {
+            path: '/dashboard/',
+            element: <Products />,
+          },
+          {
+            path: '/dashboard/add-product',
+            element: <AddProduct />,
+          },
+          {
+            path: '/dashboard/orders',
+            elements: <Orders />,
+          },
+        ],
       },
     ],
   },
