@@ -1,0 +1,74 @@
+main {
+
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    max-width: 100%;
+}
+
+.auth-card {
+    width: 325px;
+    height: fit-content;
+    padding: 1.5rem;
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow: .25rem .25rem .25rem #17282520;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+}
+
+.auth-card h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+ 
+
+h3.input-heading {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    margin-bottom: 0.125rem;
+    font-weight: 500;
+    color: #172825;
+
+}
+
+.auth-input {
+    width: 100%;
+    padding: .5em;
+    border-radius: 4px;
+    outline: none;
+    border-color: #172825;
+    transition: all .2s ease-in;
+}
+
+.auth-input:focus {
+    border-color: #01c8a4;
+}
+
+.form-button {
+    background-color: #01c8a4;
+    border: 2px solid white;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: .5rem;
+    color: #172825;
+    margin-top: 0.5rem;
+    border-radius: 50px;
+    transition: all .2s ease-in;
+}
+
+.form-button:hover {
+    background-color: white;
+    border: 2px solid #01c8a4;
+    cursor: pointer;
+}
+
+.password-error {
+    font-size: .75rem;
+    display: block;
+    color: #ff4848;
+}
