@@ -6,6 +6,7 @@ import Home from '../pages/Home/Home';
 import Login from '../pages/Login/Login';
 import Product from '../pages/Product/Product';
 import Register from '../pages/Register/Register';
+import Role from '../pages/Role/Role';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: '/check-out',
         element: <CheckOut />,
+      },
+      {
+        path: '/select-role',
+        element: <Role />,
       },
     ],
   },

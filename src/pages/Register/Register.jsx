@@ -6,7 +6,7 @@ const Register = () => {
     if (data.password !== data.confirmPassword) {
       setError('Passwords did not match!');
     } else {
-      console.log(data)
+      console.log(data);
     }
   };
   return (
