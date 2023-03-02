@@ -10,7 +10,7 @@ import Role from '../pages/Role/Role';
 import Dashboard from '../pages/Dashboard/Dashboard';
 import Products from '../components/dashboard/Products/NavProducts';
 import AddProduct from '../components/dashboard/AddProducts/AddProduct';
-import Orders from '../components/dashboard/Orders/Orders';
+import Orders from '../components/dashboard/Orders/Orders'
 
 const router = createBrowserRouter([
   {
@@ -59,7 +59,7 @@ const router = createBrowserRouter([
           },
           {
             path: '/dashboard/orders',
-            elements: <Orders />,
+            element: <Orders />,
           },
         ],
       },
