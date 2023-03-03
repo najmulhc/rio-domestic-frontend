@@ -1,11 +1,21 @@
 import { useForm } from 'react-hook-form';
 import './AddProduct.css';
 
+const generateId = () => {
+  let hexCode = '';
+  const hexValues = 'abcdef0123456789';
+  for (let i = 0; i < 6; i++) {
+    hexCode += hexValues[Math.floor(Math.random() * 16)];
+  }
+  return hexCode;
+};
+
 const AddProduct = () => {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     const { name, brand, ram, stock, screenType, screenSize, processor } = data;
     const product = {
+      id: generateId(),
       name,
       brand,
       ram,
