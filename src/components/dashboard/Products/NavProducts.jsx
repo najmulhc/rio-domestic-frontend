@@ -3,6 +3,19 @@ import './NavProducts.css';
 
 const NavProducts = () => {
   const { products } = useSelector((state) => state.products);
+ 
+  const updateProduct = (product) => {
+    console.log({
+      action: 'update',
+      product: { ...product },
+    });
+  };
+  const deleteProduct = (product) => {
+    console.log({
+      action: 'delete',
+      product: { ...product },
+    });
+  };
 
   return (
     <div>
@@ -11,16 +24,43 @@ const NavProducts = () => {
         <thead>
           <td>Id</td>
           <td>Name</td>
-          <td>Brand</td>
           <td>Stock</td>
+          <td>Actions</td>
         </thead>
         <tbody>
           {products.map((product) => (
             <tr>
               <td className='product-prop'>{product.id}</td>
               <td className='product-prop'>{product.name}</td>
-              <td className='product-prop'>{product.brand}</td>
-              <td className='product-prop'>{product.stock ? 'In Stock' : 'Out of Stock'}</td>
+              <td className='product-prop'>
+                <div className='btn-container'>
+                  <p className={`stock ${product.stock ? 'stock-in' : 'stock-out'}`}>
+                    {product.stock ? 'In Stock' : 'Out of Stock'}
+                  </p>
+                </div>
+              </td>
+              <td className='product-prop'>
+                <div className='btn-container'>
+                  <button
+                    className='stock update'
+                    onClick={(e) => {
+                      e.preventDefault();
+                      updateProduct(product);
+                    }}
+                  >
+                    Update
+                  </button>
+                  <button
+                    className='stock stock-out'
+                    onClick={(e) => {
+                      e.preventDefault();
+                      deleteProduct(product);
+                    }}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </td>
             </tr>
           ))}
         </tbody>

@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 import Hero from '../../components/Hero/Hero';
 import ProductCard from '../../components/productCard/ProductCard';
-
 import './Home.css';
+
 const Home = () => {
   const { products } = useSelector((state) => state.products);
   
