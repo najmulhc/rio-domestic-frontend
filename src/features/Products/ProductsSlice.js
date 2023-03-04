@@ -13,7 +13,7 @@ const initialState = {
         type: 'Retina',
       },
       processor: 'A15 Bionic',
-      stock: 5,
+      stock: 34,
       price: 899,
     },
     {
@@ -39,7 +39,7 @@ const initialState = {
         type: 'AMOLED',
       },
       processor: 'Snapdragon 8 Gen 1',
-      stock: 2,
+      stock: 0,
       price: 649,
     },
     {
@@ -52,7 +52,7 @@ const initialState = {
         type: 'Retina',
       },
       processor: 'A15 Bionic',
-      stock: 10,
+      stock: 12,
       price: 749,
     },
     {
@@ -65,7 +65,7 @@ const initialState = {
         type: 'Dynamic AMOLED',
       },
       processor: 'Snapdragon 888',
-      stock: 3,
+      stock: 0,
       price: 899,
     },
     {
@@ -78,7 +78,7 @@ const initialState = {
         type: 'IPS LCD',
       },
       processor: 'MediaTek Helio G95',
-      stock: 7,
+      stock: 80,
       price: 549,
     },
     {

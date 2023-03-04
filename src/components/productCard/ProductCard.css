@@ -5,12 +5,14 @@
     border-radius: 15px;
     background-color: white;
     box-shadow: .25rem .25rem .25rem #17282520;
-    display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+
 }
 
-
+.product-card-testing{ 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
 .item-name {
     margin-bottom: .35rem;
@@ -22,6 +24,7 @@
     font-size: .75rem;
     padding: .25rem .5rem;
     border-radius: 20px;
+    font-weight: bold;
 
 }
 
@@ -35,7 +38,6 @@
     border-bottom: 2px solid #172825;
     
 }
-
 
 
 .cart-button {
@@ -75,4 +77,18 @@
     padding: .25rem .5rem;
     background-color: #01c8a4;
     border-radius: 50px;
+}
+.apple {
+    background-color:#a8b2d1 ;
+    color: black;
+}
+
+.samsung {
+    background-color: #1428a0;
+    color: white;
+}
+
+.xiaomi {
+    background-color: #ff6700;
+    color: white;
 }

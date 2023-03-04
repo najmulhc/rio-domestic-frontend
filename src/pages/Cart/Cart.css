@@ -7,7 +7,7 @@
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    padding: 1rem;
+    padding-right: 1rem;
 }
 
 .payment-info {
@@ -23,5 +23,5 @@
     font-weight: normal;
     margin-top: 0.25rem;
     color: #0d1312;
-    text-align: right;
+
 }

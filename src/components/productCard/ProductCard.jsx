@@ -1,22 +1,20 @@
 import './ProductCard.css'
+import { BsFillCartPlusFill, BsFillCartDashFill } from 'react-icons/bs';
+import { useDispatch } from 'react-redux';
+import { addToCart, removeFromCart } from '../../features/cart/CartSlice';
 const ProductCard = ({ product, cart }) => {
   const { name, brand, ram, screen, processor, price } = product;
+  const dispatch = useDispatch();
   const handleAddToCart = (e) => {
     e.preventDefault();
-    console.log({
-      action: 'add-to-cart',
-      product,
-    });
+    dispatch(addToCart(product));
   };
   const handleRemoveFromCart = (e) => {
     e.preventDefault();
-    console.log({
-      action: 'remove-from-cart',
-      product,
-    });
+    dispatch(removeFromCart(product));
   };
   return (
-    <div className='product-container'>
+    <div className='product-container product-card-testing'>
       <div className='top-container'>
         <div className='name-price-container'>
           <h2 className='item-name'>{name}</h2>
@@ -26,7 +24,13 @@ const ProductCard = ({ product, cart }) => {
             <h2 className='price'>${price}</h2>
           )}
         </div>
-        <span className='brand-badge'>{brand}</span>
+        <span
+          className={`brand-badge ${brand == 'Apple' && 'apple'} ${
+            brand == 'Samsung' && 'samsung'
+          }  ${brand == 'Xiaomi' && 'xiaomi'}`}
+        >
+          {brand}
+        </span>
       </div>
       <div className='spec-container'>
         <h3>Specifications</h3>
@@ -41,6 +45,7 @@ const ProductCard = ({ product, cart }) => {
         type='submit'
         onClick={cart ? handleRemoveFromCart : handleAddToCart}
       >
+        {cart ? <BsFillCartDashFill /> : <BsFillCartPlusFill />}{' '}
         {cart ? 'Remove from Cart' : 'Add To Cart'}
       </button>
     </div>
