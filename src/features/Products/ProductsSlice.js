@@ -14,6 +14,7 @@ const initialState = {
       },
       processor: 'A15 Bionic',
       stock: 5,
+      price: 899,
     },
     {
       id: '6d5c4b3a2',
@@ -26,6 +27,7 @@ const initialState = {
       },
       processor: 'Exynos 2200',
       stock: 8,
+      price: 799,
     },
     {
       id: '2b3c4d5e6',
@@ -38,6 +40,7 @@ const initialState = {
       },
       processor: 'Snapdragon 8 Gen 1',
       stock: 2,
+      price: 649,
     },
     {
       id: '9a8b7c6d5',
@@ -50,6 +53,7 @@ const initialState = {
       },
       processor: 'A15 Bionic',
       stock: 10,
+      price: 749,
     },
     {
       id: '3c4d5e6f7',
@@ -62,6 +66,7 @@ const initialState = {
       },
       processor: 'Snapdragon 888',
       stock: 3,
+      price: 899,
     },
     {
       id: '5e6f7a8b9',
@@ -74,6 +79,7 @@ const initialState = {
       },
       processor: 'MediaTek Helio G95',
       stock: 7,
+      price: 549,
     },
     {
       id: '7f8e9d0c1',
@@ -86,6 +92,7 @@ const initialState = {
       },
       processor: 'A13 Bionic',
       stock: 0,
+      price: 399,
     },
   ],
   isError: false,

@@ -1,0 +1,27 @@
+.check-out {
+    margin-left: auto;
+    width: 200px;
+}
+
+.btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+}
+
+.payment-info {
+    width: 400px;
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: 2rem;
+    border-top: 1px solid #0d1312;
+
+}
+
+.payment-info h3 {
+    font-weight: normal;
+    margin-top: 0.25rem;
+    color: #0d1312;
+    text-align: right;
+}
