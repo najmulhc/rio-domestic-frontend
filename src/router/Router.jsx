@@ -1,6 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Container from '../components/container/Container';
-import Cart from '../pages/Cart/Cart';
 import CheckOut from '../pages/CheckOut/CheckOut';
 import Home from '../pages/Home/Home';
 import Login from '../pages/Login/Login';
@@ -10,7 +9,8 @@ import Role from '../pages/Role/Role';
 import Dashboard from '../pages/Dashboard/Dashboard';
 import Products from '../components/dashboard/Products/NavProducts';
 import AddProduct from '../components/dashboard/AddProducts/AddProduct';
-import Orders from '../components/dashboard/Orders/Orders'
+import Orders from '../components/dashboard/Orders/Orders';
+import Cart from '../pages/Cart/Cart';
 
 const router = createBrowserRouter([
   {

@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import ProductCard from '../../components/productCard/ProductCard';
+import UserProtector from '../../components/Protectors/UserProtector';
 import './Cart.css';
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -27,28 +27,31 @@ const Cart = () => {
     console.log(order);
   };
   return (
-    <div className='main-container'>
-      <h2 className='page-title'>Cart</h2>
-      <div className='products-container'>
-        {cart.map((product) => (
-          <ProductCard product={product} key={product.id} cart />
-        ))}
+    <UserProtector>
+      {' '}
+      <div className='main-container'>
+        <h2 className='page-title'>Cart</h2>
+        <div className='products-container'>
+          {cart.map((product) => (
+            <ProductCard product={product} key={product.id} cart />
+          ))}
+        </div>
+        <div className='payment-info'>
+          <h3>Total to be paid: ${order.totalCost}</h3>
+        </div>
+        <div className='btn-container'>
+          <button
+            className='cart-button check-out'
+            onClick={(e) => {
+              e.preventDefault();
+              handleCheckOut();
+            }}
+          >
+            CheckOut
+          </button>
+        </div>
       </div>
-      <div className='payment-info'>
-        <h3>Total to be paid: ${order.totalCost}</h3>
-      </div>
-      <div className='btn-container'>
-        <button
-          className='cart-button check-out'
-          onClick={(e) => {
-            e.preventDefault();
-            handleCheckOut();
-          }}
-        >
-          CheckOut
-        </button>
-      </div>
-    </div>
+    </UserProtector>
   );
 };
 

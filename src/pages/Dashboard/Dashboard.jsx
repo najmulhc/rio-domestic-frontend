@@ -1,13 +1,15 @@
-import { Outlet } from 'react-router-dom';
-import DashboardNav from '../../components/dashboard/Nav/DashboardNav';
+import UserProtector from '../../components/Protectors/UserProtector';
 import './Dashboard.css';
-
+import { Outlet } from 'react-router';
+import DashboardNav from '../../components/dashboard/Nav/DashboardNav';
 const Dashboard = () => {
   return (
-    <div className='dashboard-container main-container'>
-      <DashboardNav />
-      <Outlet />
-    </div>
+    <UserProtector>
+      <div className='dashboard-container main-container'>
+        <DashboardNav />
+        <Outlet />
+      </div>
+    </UserProtector>
   );
 };
 
