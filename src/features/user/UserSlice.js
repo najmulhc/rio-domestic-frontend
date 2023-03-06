@@ -3,7 +3,14 @@ import axios from 'axios';
 const initialState = {
   email: '',
   role: '',
+  error: '',
 };
+
+export const login = createAsyncThunk('user/login', async ({ email, password }) => {
+  const response = await axios.post('http://localhost:5000/user/login', { email, password });
+  console.log(response);
+  return response;
+});
 
 export const setRule = createAsyncThunk('user/set-rule', ({ email, role }) => {
   return axios.patch('http://localhost:5000/user', { email, role });
@@ -40,6 +47,18 @@ export const userSlice = createSlice({
         const user = action.payload.data.user;
         state.email = user.email;
         state.role = user.role;
+      })
+      .addCase(login.fulfilled, (state, action) => {
+         const response = action.payload;
+        if(response.data.message) {
+          state.error = response.data.message
+        } else {
+          const user = action.payload.data.user;
+        state.email = user.email;
+        state.role = user.role;
+        }
+      }).addCase(login.rejected, (state, action) => {
+        state.response = action.error
       });
   },
 });

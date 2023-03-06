@@ -1,10 +1,13 @@
+import { useDispatch } from 'react-redux';
 import Auth from '../../components/auth/Auth';
+import { login } from '../../features/user/UserSlice';
 
 const Login = () => {
-  const login = (data) => console.log(data);
+  const dispatch = useDispatch()
+  const handleLogin = (data) =>  dispatch(login(data));
   return (
     <div>
-      <Auth isLogin={true} runFunction={login} />
+      <Auth isLogin={true} runFunction={handleLogin} />
     </div>
   );
 };
