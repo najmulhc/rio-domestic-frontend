@@ -34,6 +34,7 @@ nav ul li a {
     border-radius: 20px;
     transition: all .2s ease-in;
     color: #172825;
+    font-weight: 600;
 }
 
 .nav-button:hover {

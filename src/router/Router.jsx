@@ -6,11 +6,12 @@ import Login from '../pages/Login/Login';
 import Product from '../pages/Product/Product';
 import Register from '../pages/Register/Register';
 import Role from '../pages/Role/Role';
-import Dashboard from '../pages/Dashboard/Dashboard';
 import Products from '../components/dashboard/Products/NavProducts';
 import AddProduct from '../components/dashboard/AddProducts/AddProduct';
 import Orders from '../components/dashboard/Orders/Orders';
+import RoleProtector from '../components/Protectors/RoleProtector';
 import Cart from '../pages/Cart/Cart';
+import Dashboard from '../pages/Dashboard/Dashboard';
 
 const router = createBrowserRouter([
   {
@@ -35,7 +36,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/cart',
-        element: <Cart />,
+        element: (
+          <RoleProtector role='customer'>
+            <Cart />
+          </RoleProtector>
+        ),
       },
       {
         path: '/check-out',
@@ -47,7 +52,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard',
-        element: <Dashboard />,
+        element: (
+          <RoleProtector role="admin">
+            <Dashboard />
+          </RoleProtector>
+        ),
         children: [
           {
             path: '/dashboard/',

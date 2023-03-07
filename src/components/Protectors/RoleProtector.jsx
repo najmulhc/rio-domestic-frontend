@@ -1,19 +1,15 @@
-import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { selectUser } from '../../features/user/UserSlice';
 
-const UserProtector = ({ children }) => {
+const RoleProtector = ({ children, role }) => {
   const user = useSelector(selectUser);
   const navigate = useNavigate();
-  useEffect(() => {
-    if (!user.email) {
-      navigate('/login');
-    }
-  }, [user]);
-  if (user.email) {
+  if ((user.role === role)) {
     return children;
+  } else {
+    navigate('/');
   }
 };
 
-export default UserProtector;
+export default RoleProtector;

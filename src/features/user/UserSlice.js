@@ -32,6 +32,10 @@ export const userSlice = createSlice({
     setUser: (state, action) => {
       state.email = action.payload.email;
     },
+    logOut: (state, aciton) => {
+      state.email = '';
+      state.role = '';
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -49,21 +53,22 @@ export const userSlice = createSlice({
         state.role = user.role;
       })
       .addCase(login.fulfilled, (state, action) => {
-         const response = action.payload;
-        if(response.data.message) {
-          state.error = response.data.message
+        const response = action.payload;
+        if (response.data.message) {
+          state.error = response.data.message;
         } else {
           const user = action.payload.data.user;
-        state.email = user.email;
-        state.role = user.role;
+          state.email = user.email;
+          state.role = user.role;
         }
-      }).addCase(login.rejected, (state, action) => {
-        state.response = action.error
+      })
+      .addCase(login.rejected, (state, action) => {
+        state.response = action.error;
       });
   },
 });
 
 export const selectUser = (state) => state.user;
 
-export const { setUser } = userSlice.actions;
+export const { setUser, logOut } = userSlice.actions;
 export default userSlice.reducer;
