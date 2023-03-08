@@ -1,109 +1,45 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 const initialState = {
   isLoading: false,
-  products: [
-    {
-      id: '1a2b3c4d5',
-      name: 'iPhone 14',
-      brand: 'Apple',
-      ram: 6,
-      screen: {
-        size: 6.7,
-        type: 'Retina',
-      },
-      processor: 'A15 Bionic',
-      stock: 34,
-      price: 899,
-    },
-    {
-      id: '6d5c4b3a2',
-      name: 'Galaxy S22',
-      brand: 'Samsung',
-      ram: 8,
-      screen: {
-        size: 6.8,
-        type: 'Dynamic AMOLED',
-      },
-      processor: 'Exynos 2200',
-      stock: 8,
-      price: 799,
-    },
-    {
-      id: '2b3c4d5e6',
-      name: 'Mi 12',
-      brand: 'Xiaomi',
-      ram: 12,
-      screen: {
-        size: 6.81,
-        type: 'AMOLED',
-      },
-      processor: 'Snapdragon 8 Gen 1',
-      stock: 0,
-      price: 649,
-    },
-    {
-      id: '9a8b7c6d5',
-      name: 'iPhone 13',
-      brand: 'Apple',
-      ram: 6,
-      screen: {
-        size: 6.1,
-        type: 'Retina',
-      },
-      processor: 'A15 Bionic',
-      stock: 12,
-      price: 749,
-    },
-    {
-      id: '3c4d5e6f7',
-      name: 'Galaxy Z Flip 3',
-      brand: 'Samsung',
-      ram: 8,
-      screen: {
-        size: 6.7,
-        type: 'Dynamic AMOLED',
-      },
-      processor: 'Snapdragon 888',
-      stock: 0,
-      price: 899,
-    },
-    {
-      id: '5e6f7a8b9',
-      name: 'Redmi Note 11 Pro',
-      brand: 'Xiaomi',
-      ram: 8,
-      screen: {
-        size: 6.67,
-        type: 'IPS LCD',
-      },
-      processor: 'MediaTek Helio G95',
-      stock: 80,
-      price: 549,
-    },
-    {
-      id: '7f8e9d0c1',
-      name: 'iPhone SE',
-      brand: 'Apple',
-      ram: 3,
-      screen: {
-        size: 4.7,
-        type: 'Retina',
-      },
-      processor: 'A13 Bionic',
-      stock: 0,
-      price: 399,
-    },
-  ],
+  products: [],
   isError: false,
   error: '',
 };
 
+export const fetchAllProduct = createAsyncThunk("products/get", async () => {
+ const fetchedProduct = await axios.get("http://localhost:5000/product");
+  return fetchedProduct.data
+})
+
+export const postProduct = createAsyncThunk("product/post", async (product) => {
+  const postedProduct = await axios.post('http://localhost:5000/product', product);
+  return postedProduct.data
+})
+
+
+export const deleteProduct = createAsyncThunk("product/delete", async (product) => {
+  const deleted = await axios.delete(`http://localhost:5000/product/${product._id}`);
+   return deleted.data
+})
+
 export const productsSlice = createSlice({
   name: 'products',
   initialState,
-  extraReducers: (builder) => {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchAllProduct.fulfilled, (state, action) => {
+      state.products = action.payload.products 
+    }).addCase(postProduct.fulfilled, (state, action) => {
+       state.products.push(action.payload.product)
+    }).addCase(deleteProduct.fulfilled, (state, action) => {
+      const {product } = action.payload;
+      const found = state.products.find(item => item._id === product._id);
+      state.products.splice(state.products.indexOf(found), 1)
+    }) 
+  },
 });
 
 export const {} = productsSlice.actions;
+export const selectProducts = state => state.products
 export default productsSlice.reducer;

@@ -1,20 +1,19 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteProduct, selectProducts } from '../../../features/Products/ProductsSlice';
 import './NavProducts.css';
 
 const NavProducts = () => {
-  const { products } = useSelector((state) => state.products);
- 
+  const { products } = useSelector(selectProducts);
+  const dispatch = useDispatch()
   const updateProduct = (product) => {
     console.log({
       action: 'update',
       product: { ...product },
     });
   };
-  const deleteProduct = (product) => {
-    console.log({
-      action: 'delete',
-      product: { ...product },
-    });
+
+  const handleProductDelete = (product) => {
+     dispatch(deleteProduct(product))
   };
 
   return (
@@ -54,7 +53,7 @@ const NavProducts = () => {
                     className='stock stock-out'
                     onClick={(e) => {
                       e.preventDefault();
-                      deleteProduct(product);
+                      handleProductDelete(product);
                     }}
                   >
                     Delete

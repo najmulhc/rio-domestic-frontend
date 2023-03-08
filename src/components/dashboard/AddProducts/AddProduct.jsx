@@ -1,4 +1,6 @@
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { postProduct } from '../../../features/Products/ProductsSlice';
 import './AddProduct.css';
 
 const generateId = () => {
@@ -12,8 +14,9 @@ const generateId = () => {
 
 const AddProduct = () => {
   const { register, handleSubmit } = useForm();
+  const dispatch = useDispatch()
   const onSubmit = (data) => {
-    const { name, brand, ram, stock, screenType, screenSize, processor } = data;
+    const { name, brand, ram, stock, screenType, screenSize, processor, price } = data;
     const product = {
       id: generateId(),
       name,
@@ -24,9 +27,10 @@ const AddProduct = () => {
         size: screenSize,
       },
       stock,
+ price, 
       processor,
     };
-    console.log(product);
+    dispatch(postProduct(product))
   };
   return (
     <div className='form-container'>
@@ -53,6 +57,17 @@ const AddProduct = () => {
               <option value='xiaomi'>Xiomi</option>
               <option value='samsung'>Samsung</option>
             </select>
+          </label>
+          <label htmlFor=''>
+            <h3 className='input-heading'>Price</h3>
+            <input
+              className='auth-input'
+              type='number'
+              name=''
+              id=''
+              {...register('price')}
+              required
+            />
           </label>
           <label htmlFor=''>
             <h3 className='input-heading'>RAM</h3>

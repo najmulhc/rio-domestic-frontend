@@ -25,9 +25,9 @@ const ProductCard = ({ product, cart }) => {
           )}
         </div>
         <span
-          className={`brand-badge ${brand == 'Apple' && 'apple'} ${
-            brand == 'Samsung' && 'samsung'
-          }  ${brand == 'Xiaomi' && 'xiaomi'}`}
+          className={`brand-badge ${brand == 'apple' && 'apple'} ${
+            brand == 'samsung' && 'samsung'
+          }  ${brand == 'xiaomi' && 'xiaomi'}`}
         >
           {brand}
         </span>
