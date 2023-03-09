@@ -1,68 +1,63 @@
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getOrders, selectOrder, updateOrderStatus } from '../../../features/orders/orderSlice';
 import './Orders.css';
 
 const Orders = () => {
   const { products } = useSelector((state) => state.products);
-  const order = {
-    state: 'completed',
-    id: 'df235c',
-    customer: 'name@gmail.com',
-    product: { ...products[3] },
-    quantity: 3,
-  };
-  const completeOrder = (order) => {
-    order.state = 'completed';
-    console.log(order);
-  };
-  const rejectOrder = (order) => {
-    order.state = 'rejected';
-    console.log(order);
-  };
-  console.log(order);
+  const { orders } = useSelector(selectOrder);
+  const dispatch = useDispatch();
+
   return (
-    <div className='order-container'>
-      <h2 className='page-title'>Orders</h2>
-      <table>
+    <div className=''>
+      <h2 className='heading'>Orders</h2>
+      <table className='product-container nav-table-container'>
         <thead>
-          <th>Id</th>
           <th>Customer</th>
-          <th>Product</th>
-          <th>Price</th>
-          <th>Stock</th>
-          <th>Action</th>
+          <th>Total Products</th>
+          <th>Total Cost</th>
+          <th>Status</th>
+          <th>Actions</th>
         </thead>
         <tbody>
-          <tr>
-            <td>{order.id}</td>
-            <td>{order.customer}</td>
-            <td>{order.product.name}</td>
-            <td>${order.product.price}</td>
-            <td>{order.product.stock}</td>
-            <td className=''>
-              <div className='btn-container'>
-                <button
-                  className='stock update'
-                  onClick={(e) => {
-                    e.preventDefault();
-                    completeOrder(order);
-                  }}
-                 disabled={order.state === 'completed'}
-                >
-                  {order.state === 'completed'? "Completed" : "Complete"}
-                </button>
-                <button
-                  className='stock stock-out'
-                  onClick={(e) => {
-                    e.preventDefault();
-                    rejectOrder(order);
-                  }}
-                  disabled={order.state === 'rejected'}
-                >
-                   {order.state === 'rejected'? "Rejected" : "Reject"}
-                </button>
-              </div>
-            </td>
-          </tr>
+          {orders.map((order) => (
+            <tr>
+              <td className='product-prop'>{order.user}</td>
+              <td className='product-prop'>{order.totalItems}</td>
+              <td className='product-prop'>${order.totalCost}</td>
+              <td className='product-prop'>
+                <span id='status' className={`${order.status.toLowerCase()}`}>
+                  {order.status}
+                </span>
+              </td>
+              <td className='product-prop'>
+                <div className='btn-container'>
+                  <button
+                    className='stock complete-order'
+                    onClick={(e) => {
+                      e.preventDefault();
+                      dispatch(updateOrderStatus({ id: order._id, stat: 'Completed' }));
+                      dispatch(getOrders());
+                    }}
+                    disabled={order.status !== 'Pending'}
+                  >
+                    Complete
+                  </button>
+                  <button
+                    className='stock reject-order'
+                    onClick={(e) => {
+                      e.preventDefault();
+                      dispatch(updateOrderStatus({ id: order._id, stat: 'Rejected' }));
+                      dispatch(getOrders());
+                    }}
+                    disabled={order.status !== 'Pending'}
+                  >
+                    Reject
+                  </button>
+                </div>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

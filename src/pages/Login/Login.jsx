@@ -13,7 +13,7 @@ const Login = () => {
   }
   return (
     <div>
-      <Auth isLogin={true} runFunction={handleLogin} />
+      <Auth isLogin={true} runFunction={handleLogin} error={user.error} />
     </div>
   );
 };

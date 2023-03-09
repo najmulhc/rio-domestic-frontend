@@ -1,5 +1,7 @@
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
 import { postProduct } from '../../../features/Products/ProductsSlice';
 import './AddProduct.css';
 
@@ -14,7 +16,8 @@ const generateId = () => {
 
 const AddProduct = () => {
   const { register, handleSubmit } = useForm();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const onSubmit = (data) => {
     const { name, brand, ram, stock, screenType, screenSize, processor, price } = data;
     const product = {
@@ -31,6 +34,8 @@ const AddProduct = () => {
       processor,
     };
     dispatch(postProduct(product))
+    toast.success("Phone addedd!");
+    navigate("/dashboard")
   };
   return (
     <div className='form-container'>

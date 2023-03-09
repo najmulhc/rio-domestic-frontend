@@ -53,7 +53,7 @@ const router = createBrowserRouter([
       {
         path: '/dashboard',
         element: (
-          <RoleProtector role="admin">
+          <RoleProtector role='admin'>
             <Dashboard />
           </RoleProtector>
         ),

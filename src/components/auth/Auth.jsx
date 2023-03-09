@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import './Auth.css';
-const Auth = ({ isLogin, runFunction, registerError }) => {
+const Auth = ({ isLogin, runFunction, error }) => {
     const {register, handleSubmit} = useForm();
     const onSubmit = data => {
        runFunction(data);
@@ -41,6 +41,7 @@ const Auth = ({ isLogin, runFunction, registerError }) => {
               {...register("password")}
             />
           </label>
+          <p className="password-error">{error}</p>
          {!isLogin &&  <label className="input-label" htmlFor='name'>
             <h3 className='input-heading'>Confirm Password</h3>
             <input
@@ -50,7 +51,7 @@ const Auth = ({ isLogin, runFunction, registerError }) => {
               id='name'
               {...register("confirmPassword")}
             />
-            <p className="password-error">{registerError}</p>
+            <p className="password-error">{error}</p>
           </label>}
           <button type="submit" className="form-button">{isLogin ? "Login": "Register"}</button>
         </form>
