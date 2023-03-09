@@ -6,13 +6,15 @@ const initialState = {
 };
 
 export const getOrders = createAsyncThunk('orders/get', async () => {
-  const { data } = await axios.get('http://localhost:5000/order');
+  const { data } = await axios.get('https://rio-domestic-backend.vercel.app/order');
   return data.data;
 });
 
 export const updateOrderStatus = createAsyncThunk('orders/updateStatus', async ({ id, stat }) => {
   console.log(stat);
-  const { data } = await axios.patch(`http://localhost:5000/order/${id}`, { stat: stat });
+  const { data } = await axios.patch(`https://rio-domestic-backend.vercel.app/order/${id}`, {
+    stat: stat,
+  });
   console.log(data.data);
 });
 

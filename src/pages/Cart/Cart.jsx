@@ -10,7 +10,7 @@ import { selectUser } from '../../features/user/UserSlice';
 
 const Cart = () => {
   const { cart } = useSelector(selectCart);
-  const {email} = useSelector(selectUser)
+  const { email } = useSelector(selectUser);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const totalItmesCreator = (arr) => {
@@ -34,7 +34,7 @@ const Cart = () => {
     totalCost: totalCostCreator(cart),
   };
   const handleCheckOut = async () => {
-    const { data } = await axios.post('http://localhost:5000/order', order);
+    const { data } = await axios.post('https://rio-domestic-backend.vercel.app/order', order);
     if (data.status === 'success') {
       toast.success('Order placed successfully!');
       dispatch(resetCart());

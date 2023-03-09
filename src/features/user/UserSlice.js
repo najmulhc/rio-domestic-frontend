@@ -7,18 +7,21 @@ const initialState = {
 };
 
 export const login = createAsyncThunk('user/login', async ({ email, password }) => {
-  const response = await axios.post('http://localhost:5000/user/login', { email, password });
+  const response = await axios.post('https://rio-domestic-backend.vercel.app/user/login', {
+    email,
+    password,
+  });
   console.log(response);
   return response;
 });
 
 export const setRule = createAsyncThunk('user/set-rule', ({ email, role }) => {
-  return axios.patch('http://localhost:5000/user', { email, role });
+  return axios.patch('https://rio-domestic-backend.vercel.app/user', { email, role });
 });
 
 export const register = createAsyncThunk('user/register', (user) => {
   try {
-    const response = axios.post('http://localhost:5000/user', user);
+    const response = axios.post('https://rio-domestic-backend.vercel.app/user', user);
     return response;
   } catch (error) {
     return error;
